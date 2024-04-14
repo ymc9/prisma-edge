@@ -1,7 +1,8 @@
+import { createPrisma } from '@/lib/db';
 import styles from './page.module.css';
-import { prisma } from '@/lib/db';
 
 export default async function Home() {
+    const prisma = createPrisma();
     const posts = await prisma.post.findMany();
 
     return (
@@ -20,3 +21,5 @@ export default async function Home() {
         </main>
     );
 }
+
+export const runtime = 'edge';
